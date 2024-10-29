@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Along med Therese✨</title>
+  </head>
+  <body>
+    <!--Sykkelutleie Kunden ønsker en applikasjon som skal kunne liste opp syklene
+    den har så andre kan leie dem. Det skal også være mulig å legge til nye
+    sykler etterhvert. Lag en modell som kan fungere til teksten ovenfor Lag
+    viewfunksjon for å vise frem alle syklene våre Lag en controllerfunksjon og
+    et view til for å kunne legge til nye sykler-->
+
+    <div id="app"></div>
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
+    <script>
+      updateView();
+      function updateView() {
+        app.innerHTML = /*html*/ `
+          ${drawBicycle()} <br>
+          <button onclick="addNewBicycle()">Legg til</button>
+        `;
+      }
+
+      function drawBicycle() {
+        const bicycle = model.data;
+        let html = "";
+        for (let i = 0; i < bicycle.length; i++) {
+          html += `
+          <div>${bicycle[i].typeOfbicycle}</div>
+          <div>${bicycle[i].isRented}</div>
+          <button onclick="rentMe(${i})">rent me</button>`;
+        }
+        return html;
+      }
+    </script>
+  </body>
+</html>
